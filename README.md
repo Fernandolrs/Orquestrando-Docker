@@ -1,3 +1,4 @@
+
  <h1>Tutorial Orquestrando Docker</h1>
 
 <h3>O que é o Docker</h3>
@@ -7,19 +8,21 @@
 
  <h3>Orquestrando docker</h3>
 
-<p>Quando as aplicações são escaladas por muitos sistemas host, a capacidade de gerenciar cada sistema host se torna  complexa. A orquestração é um termo abrangente que refere-se ao agendamento de contêiner, gerenciamento de cluster, e o provisionamento de hosts adicionais.</p>
-<p>Neste ambiente, <i>"agendamento"</i> refere-se à capacidade de um administrador carregar um arquivo de serviço em um sistema host, o qual opcionalmente estabelece restrições de agendamento de acordo com suas necessidades para executar um contêiner específico. A maior responsabilidades dos agendadores é a seleção de host, o agendador geralmente fica encarregado de selecionar automaticamente um host, e responsável pela execução com base nesses requisitos.</p>
+<p>Quando as aplicações são escaladas por muitos sistemas host, a capacidade de gerenciar cada sis
+
+tema, se torna  complexa. Para isso surgiu o termo orquestração que refere-se ao agendamento de contêiner, gerenciamento de cluster, e o provisionamento de hosts adicionais.</p>
+<p>Neste ambiente, <i>"agendamento"</i> refere-se à capacidade de um administrador carregar um arquivo de serviço em um sistema host, o qual opcionalmente estabelece restrições de agendamento de acordo com suas necessidades para executar um contêiner específico. A maior responsabilidades dos agendadores é a seleção de host, o agendador geralmente fica encarregado de selecionar automaticamente um host, é responsável pela execução com base nesses requisitos.</p>
 <p>Os agendadores geralmente definem uma política padrão de agendamento. Isto determina como os serviços são agendados quando nenhuma entrada é fornecida pelo administrador. Por exemplo, um agendador poderia escolher colocar novos serviços em hosts com o menor número de serviços atualmente ativos.</p>
 
-<h2>Tutorial Orquestrando Dockers em aplicação Producer/Consumer.</h2>
+<h2>Orquestrando Docker em aplicação Producer/Consumer.</h2>
 
-Este tutorial foi desenvolvido para demostrar a orquestração de uma aplicação utilizando dockers sendo orquestrada pelo <a href="https://www.rabbitmq.com/">RabbitMQ</a>.
-O foco deste tutorial é a Orquestração de Dockers, por este motivo utilizaremos um projeto existente desenvolvido por  Gabriel Feitosa que esta disponivel no <a href="https://github.com/gabrielfeitosa/scaling-java-with-docker">github</a>.
+Este tutorial foi desenvolvido para demonstrar a orquestração de uma aplicação utilizando docker sendo orquestrada pelo <a href="https://www.rabbitmq.com/">RabbitMQ</a>.
+O foco deste tutorial é a Orquestração do Docker, por este motivo utilizaremos um projeto existente desenvolvido por  Gabriel Feitosa que esta disponivel no <a href="https://github.com/gabrielfeitosa/scaling-java-with-docker">github</a>.
 
 
 <h3>Instalando e Configurando o Docker no UBUNTU 16.04</h3>
 
-Os passos a seguir devem ser realizados para instalação dos pacotes do Docker, realizando dowlowd do repositório oficial. A seguir demonstraremos como fazer isso passo a passo.
+Os passos a seguir devem ser realizados para instalação dos pacotes do Docker, realizando download do repositório oficial. A seguir demonstraremos como fazer isso passo a passo.
 
 <h3>Passo 1 - Instale o Docker</h3>
 
@@ -59,15 +62,15 @@ Enfim, reinicie o sistema para testar inicialização do serviço do docker.
 sudo reboot
 </pre></code>
 
-<h3>Passo 2 - Clone o projeto do repositorio do Git</h3>
+<h3>Passo 2 - Clone o projeto do repositório do Git</h3>
 
 Clone o repositorio localizado no Github denominado <a href="https://github.com/Fernandolrs/Orquestrando-Docker">Orquestrando-Docker</a>.
 
-Vale resaltar que este projeto não foi desenvolvido por nós, estamos apenas demostrando gerenciamento de Docker. Entretanto adicionamos arquivos para que o <b>Docker-compose</b> não necessita-se de configuração extra.
+Vale ressaltar que este projeto não foi desenvolvido por nós, estamos apenas demonstrando gerenciamento de Docker. Entretanto adicionamos arquivos para que o <b>Docker-compose</b> não necessita-se de configuração extra.
 
-<h3>Passo 3 - Instale Docker-compose</h3> 
+<h3>Passo 3 - Instale Docker-compose</h3>
 
-O projeto Producer/Consumer já possui as dependencias necessarias para o <strong>docker-compose</strong> ser executado. Entretanto alguns passos ainda são necessarios. O Docker-compose também é um orquestrador, utilizaremos ele para orquestrar ha criação dos conteiners, neste tutorial destacaremos mais informações sobre ele.
+O projeto Producer/Consumer já possui as dependências necessárias para o <strong>docker-compose</strong> ser executado. Entretanto alguns passos ainda são necessários. O Docker-compose também é um orquestrador, utilizaremos ele para orquestrar a criação dos contêineres, neste tutorial destacamos mais informações sobre ele.
 
 Instale o Docker-Compose
 
@@ -81,20 +84,20 @@ Verifique a Versão do Docker compose:
 sudo docker-compose -v
 </code></pre>
 
-Após a verificação, seguiremos para os proximo passo, e eventualmente destacaremos os comandos necessarios para a execução deste projeto.
+Após a verificação, seguiremos para os próximo passo, e eventualmente destacamos os comandos necessários para a execução deste projeto.
 
 <h3> Passo 4 - Executando Containers Producer/Consumer </h3>
 
-O <b>Docker-compose</b> por ser um orquestrador, ele cria os Dockers atraves do arquivo <strong>docker_conpose.yml</strong>, para este tutorial utilizamos um projeto existente , pois nosso foco e mostrar o gerenciamento de conteiners.
+O <b>Docker-compose</b> por ser um orquestrador, ele cria os Dockers através do arquivo <strong>docker_conpose.yml</strong>.
 
-Verifique atraves do Docker que nenhum conteiner foi criado ate o momento:
+Verifique através do Docker que nenhum container foi criado até o momento:
 
 <pre><code>
 sudo docker images
 </code></pre>
 
-Situando que estamos dentro da pasta do projeto execute o comando para criarmos os conteiners, cada conteiner é criando atraves do <strong>Dockerfile</strong>, que esta presente neste diretorio e no SMSConsumidor e no SMSProdutor.
-O comando <strong>build</strong> é responsavel por ler o Dockerfile e criar os conteiner conforme apersonalização de cada conteiner.
+Situando que estamos dentro da pasta do projeto execute o comando para criarmos os contêineres, cada contêiner é criado através do <strong>Dockerfile</strong>, que está presente neste diretório e no SMSConsumidor e no SMSProdutor.
+O comando <strong>build</strong> é responsável por ler o Dockerfile e criar os contêiner conforme a personalização de cada contêiner.
 
 <pre><code>
 sudo docker-compose build
@@ -106,14 +109,14 @@ Se tudo ocorreu bem ao verificarmos o docker veremos as imagens do projeto criad
 sudo docker images
 </code></pre>
 
-Enfim vamos iniciar os conteiners, do projeto com o comando <strong>up</strong>.
+Enfim vamos iniciar os contêineres, do projeto com o comando <strong>up</strong>.
 <pre><code>
 sudo docker-compose up
 </code></pre>
 
-<h3> Passo 5 - Gerenciando Conteiners </h3>
+<h3> Passo 5 - Gerenciando Containers </h3>
 
-Para Orquestrar utilizaremos o <strong>RAbbitMQ</strong>, que dispoe de uma interface grafica para facilitar a visualização.
+Para Orquestrar utilizaremos o <strong>RAbbitMQ</strong>, que dispõe de uma interface gráfica para facilitar a visualização.
 
 Agora acesse o endereço <b>localhost</b> em seu navegador, na porta especificada, caso o <b>RabbitMQ</b> solicite <i>login</i> e senha. Informe <b>guest</b> para ambos os campos.
 
@@ -121,12 +124,12 @@ Agora acesse o endereço <b>localhost</b> em seu navegador, na porta especificad
 localhost:15672/#/
 </pre>
 
-No momento vera o grafico do produtor em sentido exponecial. Para que haja melhor performace, subiremos mais conteiner consumidores passando o parametro <b>scale</b>. 
+No momento verá o gráfico do produtor em sentido exponencial. Para que haja melhor performance, subiremos mais conteiner consumidores passando o parâmetro <b>scale</b>.
 <pre></code>
 sudo docker-compose scale smsconsumer=4
 </code></pre>
 
-Lembrando que o docker-compose criara mais conteiners baseando-se no numero ja existente deles menos quantidade passada como parametro, no sentido de diminuir alguns containers, para ver o que acontece, reduziremos 2 deles. Substitua o numero final para 2 containers, que o Docker-compose automaticamente suspenderá a execução dos containers. Experimente adicionar mais Producer e ver a variação dos graficos.
+Lembrando que o docker-compose criará mais contêineres baseando-se no número já existente deles menos quantidade passada como parâmetro, no sentido de diminuir alguns containers, para ver o que acontece, reduzimos 2 deles. Substitua o número final para 2 containers, que o Docker-compose automaticamente suspenderá a execução dos containers. Experimente adicionar mais Producer e ver a variação dos gráficos.
 
 <pre></code>
 sudo docker-compose scale smsconsumer=2
@@ -140,12 +143,12 @@ sudo docker stats
 Se desejar pode remover ou parar todos os conteiner.
 <pre><code>
 docker stop $(docker ps -a -q)
-docker rm $(docker ps -a -q) 
+docker rm $(docker ps -a -q)
 </code></pre>
 
-Ou pode remover apenas 1:
+Ou pode remover apenas 1, substituindo o <b>Nome_container</b> pelo do container:
 <pre><code>
-sudo docker rm Nome_container 
+sudo docker rm Nome_container
 </code></pre>
 
 Para parar o serviço do Docker-compose execute o comando <b>down</b>.
@@ -154,7 +157,7 @@ sudo docker-compose down
 </code></pre>
 
 
-<h3> Conclusão</h3> 
+<h3> Conclusão</h3>
 
 <p>Este tutorial sobre Orquestração de Dockers, foi proposto na disciplina de Sistemas Operacionais, com objetivo de demonstrar uma aplicação sobre o tema gerenciamento de processadores e distribuição de processos. Entre as necessidade de dependências na configuração do projeto, o docker é muito produtivo, possuindo um alto potencial para suprir o mercado, sendo de grande valia estudar mais a fundo suas aplicações e seu funcionamento para aplicações futuras.</p>
 
@@ -166,4 +169,5 @@ sudo docker-compose down
 <dd>Link entre Containers - <a href="https://www.mundodocker.com.br/link-entre-containers/">Mundo Docker</a></dd>
 <dd>Criando uma imagem: <a href="https://woliveiras.com.br/posts/Criando-uma-imagem-Docker-personalizada/">Docker personalizada</a></dd>
 <dd>Criando suas prórias <a href="http://techfree.com.br/2016/03/criando-sua-propria-imagem-docker/">imagens Docker</a></dd>
+ <dd>Criando cluster Docker com <a href="https://www.mundodocker.com.br/docker-1-12/">Docker Swarm</a>
 </dl>
