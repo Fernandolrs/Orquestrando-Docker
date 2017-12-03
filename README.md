@@ -8,9 +8,7 @@
 
  <h3>Orquestrando docker</h3>
 
-<p>Quando as aplicações são escaladas por muitos sistemas host, a capacidade de gerenciar cada sis
-
-tema, se torna  complexa. Para isso surgiu o termo orquestração que refere-se ao agendamento de contêiner, gerenciamento de cluster, e o provisionamento de hosts adicionais.</p>
+<p>Quando as aplicações são escaladas por muitos sistemas host, a capacidade de gerenciar cada sistema, se torna  complexa. Para isso surgiu o termo orquestração que refere-se ao agendamento de contêiner, gerenciamento de cluster, e o provisionamento de hosts adicionais.</p>
 <p>Neste ambiente, <i>"agendamento"</i> refere-se à capacidade de um administrador carregar um arquivo de serviço em um sistema host, o qual opcionalmente estabelece restrições de agendamento de acordo com suas necessidades para executar um contêiner específico. A maior responsabilidades dos agendadores é a seleção de host, o agendador geralmente fica encarregado de selecionar automaticamente um host, é responsável pela execução com base nesses requisitos.</p>
 <p>Os agendadores geralmente definem uma política padrão de agendamento. Isto determina como os serviços são agendados quando nenhuma entrada é fornecida pelo administrador. Por exemplo, um agendador poderia escolher colocar novos serviços em hosts com o menor número de serviços atualmente ativos.</p>
 
@@ -64,7 +62,7 @@ sudo reboot
 
 <h3>Passo 2 - Clone o projeto do repositório do Git</h3>
 
-Clone o repositorio localizado no Github denominado <a href="https://github.com/Fernandolrs/Orquestrando-Docker">Orquestrando-Docker</a>.
+Clone o repositorio localizado no Github denominado <a href="https://github.com/Fernandolrs/Orquestrando-Docker/archive/master.zip">Orquestrando-Docker</a>.
 
 Vale ressaltar que este projeto não foi desenvolvido por nós, estamos apenas demonstrando gerenciamento de Docker. Entretanto adicionamos arquivos para que o <b>Docker-compose</b> não necessita-se de configuração extra.
 
